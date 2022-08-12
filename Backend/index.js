@@ -1,7 +1,7 @@
 const express = require("express"); // Импортируем express
 const mongoose = require("mongoose"); // Импортируем mongoose
 const authRouter = require("./authRouter"); // Импортируем созданный Router
-const PORT = process.env.PORT || 5000; // Переменная которая хранит значение порта
+const PORT = process.env.PORT || 5050; // Переменная которая хранит значение порта
 const cors = require("cors");
 // const bodyParser = require("body-parser");
 

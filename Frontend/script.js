@@ -7,7 +7,7 @@ const registerUser = async (event) => {
   const username = document.getElementById("reg-username").value;
   const password = document.getElementById("reg-password").value;
 
-  const result = await fetch("http://localhost:5000/auth/registration", {
+  const result = await fetch("http://localhost:5050/auth/registration", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -33,7 +33,7 @@ const loginUser = async (event) => {
   const username = document.getElementById("login-username").value;
   const password = document.getElementById("login-password").value;
 
-  const result = await fetch("http://localhost:5000/auth/login", {
+  const result = await fetch("http://localhost:5050/auth/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
