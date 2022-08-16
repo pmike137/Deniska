@@ -15,7 +15,13 @@ module.exports = function (roles) {
       const token = req.headers.authorization.split(" ")[1]; // Получаем токен из заголовка. Делим строку на две части и берем вотрую часть. Вид токена 'Bearer - (тип токена) JsakLLAldvsisdjidnjhdnfmheknvuenptwcjuem - (токен)'
       if (!token) {
         // Проверка пользователя на наличие токена
-        return res.status(403).json({ message: "Пользователь не авторизован" });
+        return res
+          .status(403)
+          .json({
+            message: "Пользователь не авторизован",
+            status: 403,
+            ok: false,
+          });
       }
       const { roles: userRoles } = jwt.verify(token, secret); // Получаем массив ролей из токена; 1-параметр: токен: 2-параметр: сектретный ключ
       let hasRole = false; // Переменная определяющая есть ли роль админа у пользователя
@@ -27,12 +33,20 @@ module.exports = function (roles) {
         }
       });
       if (!hasRole) {
-        return res.status(403).json({ message: "У вас нет доступа" });
+        return res
+          .status(403)
+          .json({ message: "У вас нет доступа", status: 403, ok: false });
       }
       next(); // Вызываем следующий по цепочке middleware
     } catch (error) {
       console.log(error);
-      return res.status(403).json({ message: "Пользователь не авторизован" });
+      return res
+        .status(403)
+        .json({
+          message: "Пользователь не авторизован",
+          status: 403,
+          ok: false,
+        });
     }
   };
 };

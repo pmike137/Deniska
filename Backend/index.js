@@ -3,20 +3,13 @@ const mongoose = require("mongoose"); // Импортируем mongoose
 const authRouter = require("./authRouter"); // Импортируем созданный Router
 const PORT = process.env.PORT || 5050; // Переменная которая хранит значение порта
 const cors = require("cors");
-// const bodyParser = require("body-parser");
 
 const app = express(); // Задаем переменную для функции express, это является нашим приложением
 
 app.use(cors());
-// app.use(bodyParser.json());
 
 app.use(express.json()); // Парсим json
 app.use("/auth", authRouter); // Прослушиваем Router 1-параметр: url по котрому будет слушаться Router; 2-параметр: сам Router
-
-// app.post("/api/register", async (req, res) => {
-//   console.log(req.body);
-//   res.json({ status: "ok" });
-// });
 
 const start = async () => {
   // Функця запускающая сервер try catch для отлавливания потенциальных ошибок. Операции с БД всегда асинхронные
